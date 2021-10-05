@@ -24,7 +24,7 @@ void deletekey(node **head, int key) {
     node *temp = *head;
     node *pre = NULL;
 
-    if (temp != NULL && temp->val == key) {
+    if (temp->val == key) {
         *head = temp->next;
         delete temp;    //free old head
         return;
@@ -35,15 +35,43 @@ void deletekey(node **head, int key) {
             pre = temp;
             temp = temp->next;
         }
+        
         if(temp == NULL) {
             cout<<"key not found\n";
             return;
         }
 
         pre->next = temp->next;
-        cout<<"key deleted\n";
+        cout<<"node deleted\n";
         delete temp;
     }
+}
+
+//delete node at a given postion (0 indexed list)
+void deletepos(node **head, int pos)  {
+    if(*head == NULL) {
+        cout<<"list empty\n";
+        return;
+    }
+
+    node *temp = *head;
+    node *pre = NULL;
+    int index = 0;
+
+    while(temp!=NULL && index!=pos) {
+        pre = temp;
+        temp = temp->next;
+        index++;
+    }
+
+    if(temp == NULL) {
+        cout<<"key not found\n";
+        return;
+    }
+
+    pre->next = temp->next;
+    cout<<"node deleted\n";
+    delete temp;    
 }
 
 //appending node at the end of the list
@@ -77,11 +105,17 @@ int main() {
     append(&head, 2);
     append(&head, 3);
     append(&head, 4);
+    append(&head, 5);
+    append(&head, 6);
+    append(&head, 7);
     cout<<"linked list now: ";
     print(head);
 
     deletekey(&head, 3);
     cout<<"linked list after deleting node with key '3': ";
+    print(head);
+    deletepos(&head, 3);
+    cout<<"linked list after deleting node at index 3: ";
     print(head);
 
     return 0;
