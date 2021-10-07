@@ -57,8 +57,7 @@ void print(node *node) {
 int main() {
 
     node *head = NULL, *tail = NULL;
-    int a, b;
-
+    
     add(&head, 2);
     append(&head, 3);
     insert(head->next, 1);
