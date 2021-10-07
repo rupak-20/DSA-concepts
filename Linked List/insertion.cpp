@@ -1,3 +1,5 @@
+//inserting node at the beginning, after a certain node and at the end of a linked list
+
 #include<iostream>
 using namespace std;
 
