@@ -58,7 +58,7 @@ void print(node *node) {
 //driver code
 int main() {
 
-    node *head = NULL, *tail = NULL;
+    node *head = NULL;
     
     add(&head, 2);
     append(&head, 3);
