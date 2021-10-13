@@ -7,12 +7,12 @@
 #include<iostream>
 #include<vector>
 #include<stdlib.h>
+#include<time.h>
 using namespace std;
 
 //make partitions based on the random pivots
 int partition(vector<int> &arr, int start, int stop) {
-    int pivot = start;
-    int i = start-1, j = stop+1;
+    int pivot = start, i = start-1, j = stop+1;
 
     while(true) {
         while(true) {
@@ -34,8 +34,9 @@ int partition(vector<int> &arr, int start, int stop) {
 
 //generating random pivot points
 int randPivot(vector<int> &arr, int start, int stop) {
-    //random numbers between stop/4 and 3*stop/4
-    int pivot = (rand()%(3*stop/4 - stop/4 + 1)) + stop/4;
+
+    srand(time(NULL));
+    int pivot = (rand()%(stop - start + 1)) + start;
 
     //swap numbers at index start and pivot
     int temp = arr[start];
