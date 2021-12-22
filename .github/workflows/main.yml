@@ -1,0 +1,21 @@
+name: Autoformat
+on: 
+   push:
+   workflow_dispatch:
+jobs:
+  autoformat_job:
+    runs-on: ubuntu-latest
+    name: Automatic formatting
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+    - name: Autoformat
+      id: format
+      uses: SKIRT/auto-format@master
+    - name: Autocommit
+      if: steps.format.outputs.status == 'changed'
+      run: |
+        git config --global user.name 'Aatmaj-Zephyr'
+        git config --global user.email 'Aatmaj-Zephyr@users.noreply.github.com'
+        git commit -am "Autoformat"
+        git push
