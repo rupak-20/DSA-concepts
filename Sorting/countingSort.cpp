@@ -14,29 +14,21 @@ vector<int> countingSort(vector<int> arr)
     int maximum = *max_element(arr.begin(), arr.end()), minimum = *min_element(arr.begin(), arr.end());
     int range = maximum - minimum + 1;
 
-    cout << "after minimum and maximum\n";
-
     vector<int> counting(range, 0);
 
     //store the count of minimum number at index 0
     for (auto x : arr)
         counting[x - minimum]++;
 
-    cout << "after storing the count\n";
-
     for (int i = 0; i < counting.size() - 1; i++)
         counting[i + 1] += counting[i];
 
-    cout << "after little for loop\n";
-
     vector<int> sorted(arr.size(), 0);
-    for (int i=arr.size()-1; i>=0; i--)
+    for (int i = arr.size() - 1; i >= 0; i--)
     {
         sorted[counting[arr[i] - minimum] - 1] = arr[i];
         counting[arr[i] - minimum]--;
     }
-
-    cout << "after finding sorted\n";
 
     return sorted;
 }
