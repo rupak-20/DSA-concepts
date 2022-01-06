@@ -32,43 +32,50 @@ public:
     }
 };
 
-
-node* insertion(node *root, int val) {
+node *insertion(node *root, int val)
+{
     //if root == null return root
-    if(!root) {
+    if (!root)
+    {
         root = new node(val);
         return root;
     }
 
     node *newnode = new node(val);
     //if newnode == null return null
-    if(!newnode) {
-        cout<<"no space available!\n";
+    if (!newnode)
+    {
+        cout << "no space available!\n";
         return nullptr;
     }
-    
-    queue<node*> q;
+
+    queue<node *> q;
     q.push(root);
 
     //while queue is not empty
-    while(!q.empty()) {
+    while (!q.empty())
+    {
         node *itr = q.front();
         q.pop();
 
-        if(itr->left) {
+        if (itr->left)
+        {
             q.push(itr->left);
         }
         //if itr->left is null add newnode there
-        else {
+        else
+        {
             itr->left = newnode;
             return root;
         }
 
-        if(itr->right) {
+        if (itr->right)
+        {
             q.push(itr->right);
         }
         //if itr->right is null add newnode there
-        else {
+        else
+        {
             itr->right = newnode;
             return root;
         }
@@ -76,22 +83,25 @@ node* insertion(node *root, int val) {
 }
 
 // binary tree inorder traversal
-void inOrderTraversal(node *root) {
-    if(!root) {
+void inOrderTraversal(node *root)
+{
+    if (!root)
+    {
         return;
     }
 
     inOrderTraversal(root->left);
-    cout<<root->val<<" ";
+    cout << root->val << " ";
     inOrderTraversal(root->right);
 }
 
 //driver code
-int main() {
+int main()
+{
     node *root = new node(1);
-    cout<<"binary tree before insertion: ";
+    cout << "binary tree before insertion: ";
     inOrderTraversal(root);
-    cout<<"\n";
+    cout << "\n";
 
     root = insertion(root, 2);
     root = insertion(root, 3);
@@ -110,8 +120,8 @@ int main() {
 
     */
 
-    cout<<"binary tree after insertion: ";
+    cout << "binary tree after insertion: ";
     inOrderTraversal(root);
-    
+
     return 0;
 }
