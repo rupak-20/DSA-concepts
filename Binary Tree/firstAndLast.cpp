@@ -33,38 +33,24 @@ public:
 
 node *subtree_first(node *root)
 {
-    //return null for null pointers
-    if (!root)
+    node *itr = root;
+    while (itr != NULL && itr->left != NULL)
     {
-        return root;
-    }
-
-    node *itr = root, *prev = nullptr;
-    while (itr)
-    {
-        prev = itr;
         itr = itr->left;
     }
 
-    return prev;
+    return itr;
 }
 
 node *subtree_last(node *root)
 {
-    //return null for null pointers
-    if (!root)
+    node *itr = root;
+    while (itr != NULL && itr->right != NULL)
     {
-        return root;
-    }
-
-    node *itr = root, *prev = nullptr;
-    while (itr)
-    {
-        prev = itr;
         itr = itr->right;
     }
 
-    return prev;
+    return itr;
 }
 
 int main()
