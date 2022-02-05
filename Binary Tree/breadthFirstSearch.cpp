@@ -115,17 +115,6 @@ node *bfs(node *root, int key)
     return NULL;
 }
 
-// binary tree inorder traversal
-void inOrderTraversal(node *root)
-{
-    if (!root)
-        return;
-
-    inOrderTraversal(root->left);
-    cout << root->val << " ";
-    inOrderTraversal(root->right);
-}
-
 //driver code
 int main()
 {
