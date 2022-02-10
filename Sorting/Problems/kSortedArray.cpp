@@ -59,7 +59,7 @@ vector<int> ksorted_heapSort(vector<int> arr, int k)
 {
     int size = (arr.size() == k) ? k : k + 1;
     //insert first k+1 elements in min heap
-    priority_queue<int, vector<int>, greater<int>> pq(arr.begin(), arr.end());
+    priority_queue<int, vector<int>, greater<int>> pq(arr.begin(), arr.begin()+size);
     int index = 0;
 
     //remove min element from heap and add to the array and add remaining elements from array to the heap
